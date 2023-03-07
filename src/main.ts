@@ -155,7 +155,7 @@ view.ui.add(new Expand({
 }), {
   position: "top-right"
 });
-
+view.popup.defaultPopupTemplateEnabled = true;
 view.when().then(() => {
   map.ground.surfaceColor = new Color([220, 220, 220]);
 });
