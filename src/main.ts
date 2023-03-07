@@ -11,8 +11,7 @@ import Expand from "@arcgis/core/widgets/Expand";
 import Home from "@arcgis/core/widgets/Home";
 import LayerList from "@arcgis/core/widgets/LayerList";
 import Search from "@arcgis/core/widgets/Search";
-import "@esri/calcite-components/dist/calcite/calcite.css";
-import "@esri/calcite-components/dist/components/calcite-loader";
+import TimeSlider from "@arcgis/core/widgets/TimeSlider";
 
 // setAssetPath("https://js.arcgis.com/calcite-components/1.0.0-beta.77/assets");
 
@@ -159,5 +158,14 @@ view.popup.defaultPopupTemplateEnabled = true;
 view.when().then(() => {
   map.ground.surfaceColor = new Color([220, 220, 220]);
 });
+
+const timeSlider = new TimeSlider({
+  container: "footer",
+  fullTimeExtent: {
+    start: new Date(2021, 1, 1),
+    end: new Date(2022, 2, 1)
+  },
+  mode: "instant",
+})
 
 window["view"] = view;

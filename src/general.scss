@@ -1,5 +1,17 @@
 @import '@arcgis/core/assets/esri/themes/light/main.css';
 
+
+:root {
+  --gray: #bebebe;
+  --very_gray: #f5f3f3;
+  --red: #580000;
+  --green: #023E00;
+  --blue: #001C6A;
+  --highlight: #e0ca3c;
+  --dark_gray: #4c4c4c;
+  --medium_gray: #727272;
+}
+
 html,
 body {
   padding: 0;
@@ -8,15 +20,75 @@ body {
   width: 100%;
   display: flex;
   flex-direction: column;
+  font-size: small;
+  font-weight: bold;
+  color: var(--blue)
+}
+
+#header {
+  width: 100%;
+  height: 7%;
+  display: flex;
+  justify-content: space-between;
+  align-items: end;
+}
+
+.headerPart {
+  display: flex;
+  align-items: end;
+}
+
+#headerLeft {
+  justify-content: start;
+}
+
+.button {
+  padding: 10px;
+  cursor: pointer;
+}
+
+#tools,
+#layers {
+  color: var(--red)
+}
+
+#workspaces,
+#dimensions {
+  color: var(--green)
+}
+
+#title {
+  font-size: x-large;
+}
+
+.button:hover {
+  background-color: var(--very_gray);
+}
+
+#map {
+  width: 100%;
+  height: 73%;
+  display: flex;
+}
+
+#toolsContainer,
+#layersContainer {
+  flex-grow: 0.0001;
+}
+
+.panel {
+  transition: all 0.5s linear !important;
+}
+
+.showPanel {
+  flex-grow: 1 !important;
 }
 
 #viewDiv {
-  flex-grow: 1;
+  flex-grow: 3;
 }
 
-#loader {
-  position: absolute;
+#footer {
   width: 100%;
-  height: 100%;
-  padding: 0;
+  height: 20%;
 }
