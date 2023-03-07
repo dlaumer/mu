@@ -1,5 +1,8 @@
 import Color from "@arcgis/core/Color";
+<<<<<<< HEAD
 import { Point } from "@arcgis/core/geometry";
+=======
+>>>>>>> f46e0a25028eccdded1769fafcae044ed32ba26b
 import FeatureLayer from "@arcgis/core/layers/FeatureLayer";
 import GroupLayer from "@arcgis/core/layers/GroupLayer";
 import Map from "@arcgis/core/Map";
