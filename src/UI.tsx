@@ -3,21 +3,22 @@ import { subclass } from "@arcgis/core/core/accessorSupport/decorators";
 import { property } from "@arcgis/core/core/accessorSupport/decorators";
 import { tsx } from "@arcgis/core/widgets/support/widget";
 import Header from "./Header";
+import State from "./State";
 import { Widget } from "./Widget";
 
-
-type ConstructProperties = Pick<UI, "text">;
+type ConstructProperties = Pick<UI, "state">;
 
 @subclass("mu.UI")
 class UI extends Widget<ConstructProperties> {
 
-    @property({ constructOnly: true })
-    text: string | undefined;
+    @property()
+    state: State | undefined;
 
     render() {
         return <div>
             <Header
                 text=""
+                state={this.state}
             />
             <div id="map">
                 <div id="toolsContainer" class="panel"></div>

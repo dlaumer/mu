@@ -3,10 +3,11 @@ import { subclass } from "@arcgis/core/core/accessorSupport/decorators";
 import { property } from "@arcgis/core/core/accessorSupport/decorators";
 import { tsx } from "@arcgis/core/widgets/support/widget";
 import Button from "./Button";
+import State from "./State";
 import { Widget } from "./Widget";
 
 
-type ConstructProperties = Pick<Header, "text">;
+type ConstructProperties = Pick<Header, "text" | "state">;
 
 @subclass("mu.Header")
 class Header extends Widget<ConstructProperties> {
@@ -14,64 +15,73 @@ class Header extends Widget<ConstructProperties> {
     @property()
     text: string | undefined;
 
+    @property()
+    state: State | undefined;
+
     render() {
         return <div id="header">
             <div id="headerLeft" class="headerPart">
                 <Button
-                    text="+ Tools"
                     domId="tools"
+                    state={this.state}
                 />
                 <Button
-                    text="Workspaces"
                     domId="workspaces"
+                    state={this.state}
                 />
             </div>
             <div id="headerCenter" class="headerPart">
                 <div id="languages" class="headerPart">
                     <Button
-                        text="UA"
                         domId="ua"
+                        state={this.state}
+
                     />
                     <Button
-                        text="EN"
                         domId="en"
+                        state={this.state}
+
                     />
                     <Button
-                        text="RU"
                         domId="ru"
+                        state={this.state}
+
                     />
-                    <Button
-                        text="CN"
-                        domId="cn"
-                    />
+
                 </div>
                 <Button
-                    text="Mapping Ukraine"
                     domId="title"
+                    state={this.state}
+
                 />
                 <div id="functions" class="headerPart">
                     <Button
-                        text="Login"
                         domId="login"
+                        state={this.state}
+
                     />
                     <Button
-                        text="Help"
                         domId="help"
+                        state={this.state}
+
                     />
                     <Button
-                        text="Download"
                         domId="download"
+                        state={this.state}
+
                     />
                 </div>
             </div>
             <div id="headerRight" class="headerPart">
                 <Button
-                    text="2D/3D"
                     domId="dimensions"
+                    state={this.state}
+
                 />
                 <Button
-                    text="+ Layers"
                     domId="layers"
+                    state={this.state}
+
                 />
             </div>
         </div>;
