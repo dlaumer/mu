@@ -13,6 +13,9 @@ import LayerList from "@arcgis/core/widgets/LayerList";
 import Search from "@arcgis/core/widgets/Search";
 import TimeSlider from "@arcgis/core/widgets/TimeSlider";
 
+
+import UI from "./UI";
+
 // setAssetPath("https://js.arcgis.com/calcite-components/1.0.0-beta.77/assets");
 
 // const params = new URLSearchParams(document.location.search.slice(1));
@@ -30,6 +33,12 @@ import TimeSlider from "@arcgis/core/widgets/TimeSlider";
 //   IdentityManager.setOAuthResponseHash(responseHash);
 // };
 
+let ui = new UI({
+  container: "app", text: "test"
+});
+
+
+
 
 let country = new FeatureLayer({
   url: "https://services-eu1.arcgis.com/iqyjb3bABMyiZGeU/arcgis/rest/services/Ukraine_AdministrativeBorders/FeatureServer/2",
@@ -38,7 +47,7 @@ let country = new FeatureLayer({
   renderer: new SimpleRenderer({
     symbol: new PolygonSymbol3D({
       symbolLayers: [new FillSymbol3DLayer({
-        material: { color: "red" },
+        material: { color: "yellow" },
         outline: {
           color: "black",
           size: "1px",
@@ -56,7 +65,7 @@ let level1 = new FeatureLayer({
     symbol: new PolygonSymbol3D({
       symbolLayers: [{
         type: "fill",  // autocasts as new FillSymbol3DLayer()
-        material: { color: "red" },
+        material: { color: "yellow" },
         outline: {
           color: "black",
           size: "1px",
@@ -74,7 +83,7 @@ let level2 = new FeatureLayer({
     symbol: new PolygonSymbol3D({
       symbolLayers: [{
         type: "fill",  // autocasts as new FillSymbol3DLayer()
-        material: { color: "red" },
+        material: { color: "yellow" },
         outline: {
           color: "black",
           size: "0.5px",
@@ -101,71 +110,75 @@ const map = new Map({
   ]
 });
 
-const view = new SceneView({
-  container: "viewDiv",
-  map,
-  camera: {
-    position: new Point({
-      x: 35.13531112,
-      y: 39.48777225,
-      z: 2208722.42006
-    }),
-    heading: 2.86,
-    tilt: 22.15
-  },
-  qualityProfile: "high",
-  environment: {
-    atmosphere: {
-      quality: "high"
+ui.when(() => {
+
+
+  const view = new SceneView({
+    container: "viewDiv",
+    map,
+    camera: {
+      position: new Point({
+        x: 35.13531112,
+        y: 39.48777225,
+        z: 2208722.42006
+      }),
+      heading: 2.86,
+      tilt: 22.15
+    },
+    qualityProfile: "high",
+    environment: {
+      atmosphere: {
+        quality: "high"
+      }
     }
-  }
-});
+  });
 
-// Add widget to the top right corner of the view
-view.ui.add(new Home({
-  view: view
-}),
-  "top-left"
-);
-
-// Add widget to the top right corner of the view
-view.ui.add(new Expand({
-  view: view, content: new Search({
+  // Add widget to the top right corner of the view
+  view.ui.add(new Home({
     view: view
-  })
-}), {
-  position: "top-right"
-});
+  }),
+    "top-left"
+  );
 
-// Add widget to the top right corner of the view
-view.ui.add(new Expand({
-  view: view, content: new BasemapGallery({
-    view: view
-  })
-}), {
-  position: "top-right"
-});
+  // Add widget to the top right corner of the view
+  view.ui.add(new Expand({
+    view: view, content: new Search({
+      view: view
+    })
+  }), {
+    position: "top-right"
+  });
 
-// Add widget to the top right corner of the view
-view.ui.add(new Expand({
-  view: view, content: new LayerList({
-    view: view
-  })
-}), {
-  position: "top-right"
-});
-view.popup.defaultPopupTemplateEnabled = true;
-view.when().then(() => {
-  map.ground.surfaceColor = new Color([220, 220, 220]);
-});
+  // Add widget to the top right corner of the view
+  view.ui.add(new Expand({
+    view: view, content: new BasemapGallery({
+      view: view
+    })
+  }), {
+    position: "top-right"
+  });
 
-const timeSlider = new TimeSlider({
-  container: "footer",
-  fullTimeExtent: {
-    start: new Date(2021, 1, 1),
-    end: new Date(2022, 2, 1)
-  },
-  mode: "instant",
+  // Add widget to the top right corner of the view
+  view.ui.add(new Expand({
+    view: view, content: new LayerList({
+      view: view
+    })
+  }), {
+    position: "top-right"
+  });
+  view.popup.defaultPopupTemplateEnabled = true;
+  view.when().then(() => {
+    map.ground.surfaceColor = new Color([220, 220, 220]);
+  });
+
+  const timeSlider = new TimeSlider({
+    container: "footer",
+    fullTimeExtent: {
+      start: new Date(2021, 1, 1),
+      end: new Date(2022, 2, 1)
+    },
+    mode: "instant",
+  })
+
+  window["view"] = view;
 })
-
-window["view"] = view;
