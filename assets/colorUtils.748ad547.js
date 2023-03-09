@@ -1,1 +1,0 @@
-import{aa as u}from"./index.857de027.js";function e(a){let{r,g:t,b:o,a:n}=a;return n<1&&(r=Math.round(n*r+255*(1-n)),t=Math.round(n*t+255*(1-n)),o=Math.round(n*o+255*(1-n))),new u({r,g:t,b:o})}function c(a){const{r,g:t,b:o}=e(a);return .2126*r+.7152*t+.0722*o}export{c as u};
