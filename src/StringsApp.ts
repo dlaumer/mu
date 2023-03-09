@@ -1,3 +1,4 @@
+import stringsUrl from '../content/strings.csv?url';
 
 class StringsApp {
   languages: string[] | undefined
@@ -12,7 +13,7 @@ class StringsApp {
   init() {
     let promises = [];
     promises.push(new Promise<void>((resolve, reject) => {
-      window.fetch("../content/strings.csv").then(response => response.blob())
+      window.fetch(stringsUrl).then(response => response.blob())
         .then(blob => {
           const reader = new FileReader();
           var this2 = this;

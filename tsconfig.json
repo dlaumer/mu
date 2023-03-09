@@ -5,7 +5,10 @@
     "importHelpers": true,
     "jsx": "react",
     "jsxFactory": "tsx",
-    "lib": ["ES2020", "DOM"],
+    "lib": [
+      "ES2020",
+      "DOM"
+    ],
     "module": "ES2020",
     "moduleResolution": "Node",
     "noImplicitAny": true,
@@ -15,7 +18,13 @@
     "strict": true,
     "suppressImplicitAnyIndexErrors": true,
     "target": "ES2020",
-    "outDir": "dist/js"
+    "outDir": "dist/js",
+    "types": [
+      "vite/client"
+    ]
   },
-  "include": ["./src/**/*", "./node_modules/@arcgis/core/**/*.d.ts"]
+  "include": [
+    "./src/**/*",
+    "./node_modules/@arcgis/core/**/*.d.ts"
+  ]
 }
